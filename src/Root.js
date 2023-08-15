@@ -10,9 +10,9 @@ const Root = () => {
         <div className="navigation">
             <Navbar />
             <Routes>
-                <Route path="/" element={<Home />} /> 
-                <Route path="/AllPosts" element={<AllPosts />} />
-                <Route path="/AllPosts/:id" element={<SingularPost />}/>
+                <Route exact path="/" element={<Home />} /> 
+                <Route exact path="/AllPosts" element={<AllPosts />} />
+                <Route exact path="/AllPosts/:id" element={<SingularPost />}/>
             </Routes>
         </div>
     );

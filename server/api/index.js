@@ -15,14 +15,16 @@ router.get("/BlogPosts", async (req, res, next) => {
 
 router.get("/BlogPosts/:id", async (req, res, next) => {
     try {
-        const onePost = await blogPosts.findByPk(req.params.id);
+        const onePost = await blogPosts.findByPk(req.params.id, {
+            include:Comments,
+        });
         res.send(onePost);
     } catch (err) {
         next(err);
     }
 });
 
-router.put("/BlogPosts/:id/comments", async (req, res, next) => {
+router.post("/BlogPosts/:id/comments", async (req, res, next) => {
     try {
         const postId = req.params.id;
         const { firstName, lastName, details } = req.body;
@@ -31,7 +33,7 @@ router.put("/BlogPosts/:id/comments", async (req, res, next) => {
             firstName,
             lastName,
             details,
-            postId,
+            blogPostId: postId,
         });
 
         res.status(201).send(comment);
@@ -40,7 +42,7 @@ router.put("/BlogPosts/:id/comments", async (req, res, next) => {
     }
 });
 
-router.delete("/BlogPosts/:id/Comments", async (req, res, next) => {
+router.delete("/Comments/:id", async (req, res, next) => {
     try { 
         const oneComment = await Comments.findByPk(req.params.id);
         oneComment.destroy();
