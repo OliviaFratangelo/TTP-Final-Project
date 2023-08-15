@@ -18,7 +18,6 @@ export default function NewComment({ postId }) {
         };
 
         addComment(postId, newComment);
-
         setFirstName("");
         setLastName("");
         setDetails("");

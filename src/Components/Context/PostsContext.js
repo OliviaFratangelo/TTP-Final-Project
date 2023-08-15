@@ -11,6 +11,7 @@ export function PostsProvider({ children }) {
             details: "(i will add this later",
         },
         {
+        
             id: 2,
             title: "Plato's Cave",
             synopsis: "It's difficult to decide where to start when talking about philosophy, but I always start with Plato's cave allegory",
