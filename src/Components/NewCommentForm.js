@@ -1,28 +1,27 @@
 import React from "react";
-import axios from "axios";
 import { useState } from "react";
-import { useCommentContext } from "../Context/CommentContext";
+import { useCommentContext } from "./Context/CommentContext";
 
-export default function NewComment() {
+export default function NewComment({ postId }) {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [details, setDetails] = useState("");
     const { addComment } = useCommentContext();
 
-    async function handleSubmit(event) {
+    function handleSubmit(event) {
         event.preventDefault();
 
-        try {
-            const { data } = await axios.post("/BlogPosts/:id/comments", {
-                firstName,
-                lastName,
-                details,
-            });
-           addComment(postId, data);
+        const newComment = {
+            firstName,
+            lastName,
+            details,
+        };
 
-        } catch (err) {
-            console.error(err);
-        }
+        addComment(postId, newComment);
+
+        setFirstName("");
+        setLastName("");
+        setDetails("");
     }
 
     return (
@@ -40,6 +39,7 @@ export default function NewComment() {
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             /> <br />
+        <label htmlFor="details">Details:</label>
         <input
             name="details"
             value={details}
@@ -49,4 +49,4 @@ export default function NewComment() {
             </form> 
         </>
         );
-}
+    }

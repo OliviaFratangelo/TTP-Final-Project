@@ -12,7 +12,8 @@ return (
     <ul id = "main">
         {allPosts.map((post) => (
             <li key={post.id}>
-                <Link to={`/AllPosts/${post.id}`}>{post.name}</Link> <br />
+                <Link to={`/AllPosts/${post.id}`}>{post.title}: <br />
+                {post.synopsis}</Link> <br /> <br />
             </li>
         ))}
         </ul>

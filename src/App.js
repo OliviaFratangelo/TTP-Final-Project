@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Welcome to Letters from Philosophy</h1>
+        <h1>Letters from Philosophy 💌</h1>
       </header>
       <Router>
       <Routes>
@@ -18,9 +18,6 @@ function App() {
         <Route exact path="/AllPosts/:id" element={<SingularPost />} />
       </Routes>
       </Router>
-        <p>
-          My philosophy blog!
-        </p>
         <a
           className="App-link"
           href="https://reactjs.org"

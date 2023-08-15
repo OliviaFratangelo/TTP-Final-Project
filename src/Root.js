@@ -4,16 +4,22 @@ import Home from "./Home";
 import AllPosts from "./AllPosts";
 import SingularPost from "./SingularPost";
 import Navbar from "./navbar";
+import { PostsProvider } from './Components/Context/PostsContext';
+import { CommentProvider } from './Components/Context/CommentContext';
 
 const Root = () => {
     return (
-        <div className="navigation">
+        <div>
             <Navbar />
+            <PostsProvider>
+            <CommentProvider>
             <Routes>
                 <Route exact path="/" element={<Home />} /> 
                 <Route exact path="/AllPosts" element={<AllPosts />} />
                 <Route exact path="/AllPosts/:id" element={<SingularPost />}/>
             </Routes>
+            </CommentProvider>
+            </PostsProvider>
         </div>
     );
 };

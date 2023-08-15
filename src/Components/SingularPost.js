@@ -1,13 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { usePostsContext } from "../Context/PostsContext";
+import { usePostsContext } from "./Context/PostsContext";
 import NewComment from "./NewCommentForm";
-import { useCommentContext } from "../Context/CommentContext";
+import { useCommentContext } from "./Context/CommentContext";
 
 export default function SingularPost() {
     const { id } = useParams();
     const { allPosts } = usePostsContext();
-    const { commentsByPost } = useCommentContext();
+    const { commentsByPost, addComment } = useCommentContext();
 
     const post = allPosts.find((post) => post.id === parseInt(id));
 
@@ -19,7 +19,7 @@ export default function SingularPost() {
 
     return (
         <div>
-            <h2>{post.name}</h2>
+            <h2>{post.title}</h2>
             <p>{post.details}</p>
 
             <h3>Comments</h3>
@@ -33,7 +33,7 @@ export default function SingularPost() {
             </ul>
 
             <h3>Add a Comment</h3>
-            <NewComment postId={id} />
+            <NewComment postId={id} addComment={addComment} />
         </div>
     );
 }
