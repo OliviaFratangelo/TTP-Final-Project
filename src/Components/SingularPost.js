@@ -33,7 +33,7 @@ export default function SingularPost() {
             </ul>
 
             <h3>Add a Comment</h3>
-            <NewComment blogPostId={id} />
+            <NewComment postId={id} />
         </div>
     );
 }

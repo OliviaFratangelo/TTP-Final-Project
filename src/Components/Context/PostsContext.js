@@ -9,7 +9,7 @@ export function PostsProvider({ children }) {
  
     useEffect(() => {
         async function fetchAllPosts() {
-            const { data } = axios.get("/api/BlogPosts");
+            const { data } = await axios.get("/api/BlogPosts");
             setAllPosts(data);
         }
 
