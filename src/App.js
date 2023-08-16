@@ -3,6 +3,7 @@ import './App.css';
 import Home from "./Components/Home";
 import AllPosts from "./Components/AllPosts";
 import SingularPost from "./Components/SingularPost";
+import Navbar from "./Components/navbar";
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <header className="App-header">
         <h1>Letters from Philosophy 💌</h1>
       </header>
+      <Navbar />
       <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />

@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { PostsProvider } from './Components/Context/PostsContext';
 import { CommentProvider } from './Components/Context/CommentContext';
+import Root from './Root';
+import { BrowserRouter } from 'react-router-dom';
+import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <PostsProvider>
     <CommentProvider>
-     <App />
+    <BrowserRouter>
+     <Root />
+     </BrowserRouter>
      </CommentProvider>
     </PostsProvider>
   </React.StrictMode>

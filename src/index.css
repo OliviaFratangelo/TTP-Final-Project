@@ -14,22 +14,33 @@ code {
 
 * {
   background-color: #fccbbc;
+  color: #483c32;
+}
+
+h1 {
+  padding-top: .5rem;
+  text-align: center;
 }
 
 .navbar {
-  background-color: #e1d1d9;
-  color: red;
-  padding: 1rem;
+  padding-top: .5rem;
+  padding-bottom: 2rem;
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .navbar ul {
+  background-color: #fffef2;
   list-style: none;
   display: flex;
   justify-content: space-around;
-  padding: 0;
+  padding: 1rem;
 }
 
 .navbar a {
-  color: #e2e2e9;
+  color: #cc0000;
+  font-size: large;
+  background-color: #fffef2;
   text-decoration: none;
+  font-weight: bold;
 }
