@@ -7,7 +7,7 @@ import { useCommentContext } from "./Context/CommentContext";
 export default function SingularPost() {
     const { id } = useParams();
     const { allPosts } = usePostsContext();
-    const { commentsByPost, addComment } = useCommentContext();
+    const { commentsByPost, addComment, deleteComment } = useCommentContext();
 
     const post = allPosts.find((post) => post.id === parseInt(id));
 
@@ -16,6 +16,10 @@ export default function SingularPost() {
     }
 
     const comments = commentsByPost[id] || [];
+    
+    const handleDeleteComment = (commentId) => {
+        deleteComment(id, commentId);
+    };
 
     return (
         <div>
@@ -28,6 +32,7 @@ export default function SingularPost() {
                     <li key={comment.id}>
                         <p>{comment.details}</p>
                         <p>By: {comment.firstName} {comment.lastName}</p>
+                        <button onClick={() => handleDeleteComment(comment.id)}>Delete Comment</button>
                     </li>
                 ))}
             </ul>

@@ -11,8 +11,11 @@ useEffect(() => {
         }, []);
 
         useEffect(() => {
-            localStorage.setItem("commentsByPost", JSON.stringify(commentsByPost));
-        }, [commentsByPost]);
+            const savedComments = JSON.parse(localStorage.getItem("commentsByPost"));
+            if (savedComments !== null && savedComments.length !== 0) {
+                setCommentsByPost(savedComments);
+            }
+}, []);
 
 const addComment = async (postId, newComment) => {
     try {
@@ -27,9 +30,23 @@ const addComment = async (postId, newComment) => {
     }
 };
 
+const deleteComment = async (postId, commentId) => {
+    try {
+        const updatedComments = {
+            ...commentsByPost,
+            [postId]: commentsByPost[postId].filter(comment => comment.id !== commentId),
+        };
+        setCommentsByPost(updatedComments);
+        localStorage.setItem("commentsByPost", JSON.stringify(updatedComments))
+    } catch (error) {
+        console.error("could not delete comment", error);
+    }
+};
+
 const contextValue = {
     commentsByPost,
     addComment,
+    deleteComment,
 };
 
 return (
