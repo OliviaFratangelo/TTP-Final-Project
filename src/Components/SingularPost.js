@@ -25,7 +25,7 @@ export default function SingularPost() {
         <div>
             <h2>{post.title}</h2>
             <p>{post.details}</p>
-
+        <div className="comments-section">
             <h3>Comments</h3>
             <ul>
                 {comments.map((comment) => (
@@ -39,6 +39,7 @@ export default function SingularPost() {
 
             <h3>Add a Comment</h3>
             <NewComment postId={id} addComment={addComment} />
+            </div>
         </div>
     );
 }
